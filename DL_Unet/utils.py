@@ -6,17 +6,25 @@ import torch
 from torchvision.transforms import InterpolationMode
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
-
-def Datadownload():
-    url = 'https://drive.google.com/uc?id=1iJEx2EzLVv51hi-K1oEFUOqw8LeKj5EK'
-    output_name = 'flower102.zip'
-    if not os.path.isfile(output_name):
-        gdown.download(url, output_name, quiet=False)
-        with zipfile.ZipFile('./' + output_name, 'r') as zip_ref:
-            zip_ref.extractall('./')
+def Datadownload(isMac):
+    if isMac:
+        url = 'https://drive.google.com/uc?id=1iJEx2EzLVv51hi-K1oEFUOqw8LeKj5EK'
+        output_name = 'flower102.zip'
+        if not os.path.isfile(output_name):
+            gdown.download(url, output_name, quiet=False)
+            with zipfile.ZipFile('./' + output_name, 'r') as zip_ref:
+                zip_ref.extractall('./')
+        else:
+            print("The dataset file already exist.")
     else:
-        print("The dataset file already exist.")
+        if os.isdir('./flower102'):
+            print('datafile exists')
+        else:
+            print('this platform is Window, and No datafile exists')
+            print('you need to download datafiles by your own.')
+
 
 def Dataset(datatype):
     train_transform = torchvision.transforms.Compose(
