@@ -1,4 +1,3 @@
-import gdown
 import zipfile
 import os
 import torchvision
@@ -10,6 +9,7 @@ import os
 
 def Datadownload(isMac):
     if isMac:
+        import gdown
         url = 'https://drive.google.com/uc?id=1iJEx2EzLVv51hi-K1oEFUOqw8LeKj5EK'
         output_name = 'flower102.zip'
         if not os.path.isfile(output_name):

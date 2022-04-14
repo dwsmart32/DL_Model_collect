@@ -24,7 +24,7 @@ if __name__ == '__main__':
         isMac = False
     elif platform.platform()[0:5] == 'Darwin':
         isMac = True
-
+    else : isMac = True
 
     Datadownload(isMac)
     batch_size = 32
