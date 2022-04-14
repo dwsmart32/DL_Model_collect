@@ -20,11 +20,13 @@ import platform
 if __name__ == '__main__':
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print("Device: {}".format(device))
-    if platform.platform()[0:5] == 'Window':
+    if platform.system()[0:5] == 'Window':
         isMac = False
-    elif platform.platform()[0:5] == 'Darwin':
+    elif platform.system()[0:5] == 'Darwin':
         isMac = True
-    else : isMac = True
+    else :
+        isMac = False
+        print('error occurred')
 
     Datadownload(isMac)
     batch_size = 32
