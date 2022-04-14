@@ -28,7 +28,7 @@ def train(net, device, trainloader, validloader, num_epoch, criterion, optimizer
         # print training stats
         average_loss = running_loss / total
         with torch.no_grad():
-            validation_loss = val(net, epoch, validloader, criterion)
+            validation_loss = val(net, device, epoch, validloader, criterion)
             loss_list.append(validation_loss)
         end_time = time.time()
         elapsed_time = end_time - start_time
@@ -47,7 +47,7 @@ def train(net, device, trainloader, validloader, num_epoch, criterion, optimizer
     print('Saved Trained Model')
     return loss_list
 
-def val(net, current_epoch, validloader, criterion):  # Function to validate the network
+def val(net, device, current_epoch, validloader, criterion):  # Function to validate the network
     net.eval()
     running_loss = 0.0
     total = 0

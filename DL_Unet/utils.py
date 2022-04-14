@@ -19,7 +19,7 @@ def Datadownload(isMac):
         else:
             print("The dataset file already exist.")
     else:
-        if os.isdir('./flower102'):
+        if os.path.isdir('./flower102'):
             print('datafile exists')
         else:
             print('this platform is Window, and No datafile exists')
