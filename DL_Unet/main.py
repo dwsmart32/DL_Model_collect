@@ -16,13 +16,12 @@ from train import *
 from test import *
 from torch.utils.tensorboard import SummaryWriter
 
-# device = 'cuda' if torch.cuda.is_available() else 'cpu'
-# print("Device: {}".format(device))
-
 
 if __name__ == '__main__':
-    batch_size = 32
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    print("Device: {}".format(device))
 
+    batch_size = 32
     Datadownload()
     train_dataset = Dataset("train")
     valid_dataset = Dataset("valid")
@@ -52,21 +51,21 @@ if __name__ == '__main__':
     criterion = nn.L1Loss()
 
     net1 = ColorizationNet()
-    #net1 = net1.to(device)
+    net1 = net1.to(device)
 
     model_path = './colorization_net.ckpt'
     loss_list1 = []
     optimizer = torch.optim.Adam(net1.parameters(), lr=lr, betas=(beta1, beta2))
-    loss_list1=train(net1, trainloader, validloader, epoch, criterion, optimizer, model_path, loss_list1)
+    loss_list1=train(net1, device, trainloader, validloader, epoch, criterion, optimizer, model_path, loss_list1)
 
     net2 = Unet()
     net2 = net2.to(device)
     model_path = './Unet2.ckpt'
     loss_list2 = []
     net2 = Unet()
-    #net2 = net2.to(device)
+    net2 = net2.to(device)
     optimizer = torch.optim.Adam(net2.parameters(), lr=lr, betas=(beta1, beta2))
-    loss_list2=train(net2, trainloader, validloader, epoch, criterion, optimizer, model_path, loss_list2)
+    loss_list2=train(net2, device, trainloader, validloader, epoch, criterion, optimizer, model_path, loss_list2)
 
     writer = SummaryWriter('logs/')
     for i in range(len(loss_list2)):

@@ -4,7 +4,8 @@ from torch import device
 from utils import *
 
 
-def train(net, trainloader, validloader, num_epoch, criterion, optimizer, model_path, loss_list):  # Function to train the network
+
+def train(net, device, trainloader, validloader, num_epoch, criterion, optimizer, model_path, loss_list):  # Function to train the network
     for epoch in range(num_epoch):
         start_time = time.time()
         running_loss = 0.0
@@ -12,8 +13,8 @@ def train(net, trainloader, validloader, num_epoch, criterion, optimizer, model_
         for i, data in enumerate(trainloader, 0):
             images, label = data
             grays = rgb_to_grayscale(images)
-            #images = images.to(device)
-            #grays = grays.to(device)
+            images = images.to(device)
+            grays = grays.to(device)
 
             optimizer.zero_grad()
             outputs = net(grays)
@@ -53,8 +54,8 @@ def val(net, current_epoch, validloader, criterion):  # Function to validate the
     for i, data in enumerate(validloader, 0):
         images, label = data
         grays = rgb_to_grayscale(images)
-        #images = images.to(device)
-        #grays = grays.to(device)
+        images = images.to(device)
+        grays = grays.to(device)
         outputs = net(grays)
         loss = criterion(outputs, images)
         batch_size = images.size(0)

@@ -2,7 +2,7 @@ import torch.nn as nn
 
 class Unet(nn.Module):
     def __init__(self):
-        super(ColorizationNet2, self).__init__()
+        super(Unet, self).__init__()
         ##############################################################################
         #                          IMPLEMENT YOUR CODE                               #
         ##############################################################################
