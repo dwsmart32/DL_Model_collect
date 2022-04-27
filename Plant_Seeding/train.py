@@ -83,8 +83,7 @@ def train_net(net, trainloader, test_loader, optimizer, epoch, device, loss_fn):
         # 검증 데이터의 예측 정확도
         val_acc.append(eval_net(net, test_loader, device))
         # epoch의 결과 표시
-        print(f'epoch: {epoch+1}, train_loss:{train_losses[-1]}, train_acc:{train_acc[-1]}'
-              f',val_acc: {val_acc[-1]}', flush=True)
+        print(f'epoch: {epoch+1}, train_loss:{train_losses[-1]}, train_acc:{train_acc[-1]},val_acc: {val_acc[-1]}', flush=True)
 
         return train_losses, train_acc, val_acc
 
