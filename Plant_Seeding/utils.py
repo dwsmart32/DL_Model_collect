@@ -27,18 +27,21 @@ import os
 
 
 def Dataset(root_dir, datatype):
+    resize_factor=(640,640)
     train_transform = torchvision.transforms.Compose(
         [
-            torchvision.transforms.Resize((480, 480), interpolation=InterpolationMode.BICUBIC),
+            torchvision.transforms.Resize(resize_factor, interpolation=InterpolationMode.BICUBIC),
             torchvision.transforms.ToTensor(),
-
+            torchvision.transforms.RandomHorizontalFlip(p=0.9),
+            torchvision.transforms.RandomCrop((10, 10), padding=0),
             torchvision.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
 
     test_transform = torchvision.transforms.Compose(
         [
-            torchvision.transforms.Resize((480, 480), interpolation=InterpolationMode.BICUBIC),
+            torchvision.transforms.Resize(resize_factor, interpolation=InterpolationMode.BICUBIC),
             torchvision.transforms.ToTensor(),
-
+            torchvision.transforms.RandomHorizontalFlip(p=0.9),
+            torchvision.transforms.RandomCrop((10,10), padding=0),
             torchvision.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
     split_dataset=None
 

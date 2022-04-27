@@ -48,7 +48,7 @@ def train(net, device, trainloader, validloader, num_epoch, criterion, optimizer
     return loss_list
 
 
-def train_net(net, trainloader, test_loader, optimizer, epoch, device):
+def train_net(net, trainloader, test_loader, optimizer, epoch, device, loss_fn):
     train_losses = []
     train_acc = []
     val_acc = []
@@ -65,7 +65,7 @@ def train_net(net, trainloader, test_loader, optimizer, epoch, device):
             img = img.to(device)
             label = label.to(device)
             h = net(img)
-            loss = nn.CrossEntropyLoss().to(device)(h, label)
+            loss = loss_fn(h, label)
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
@@ -83,8 +83,8 @@ def train_net(net, trainloader, test_loader, optimizer, epoch, device):
         # 검증 데이터의 예측 정확도
         val_acc.append(eval_net(net, test_loader, device))
         # epoch의 결과 표시
-        print(epoch, train_losses[-1], train_acc[-1],
-              val_acc[-1], flush=True)
+        print(f'epoch: {epoch}, train_loss:{train_losses[-1]}, train_acc:{train_acc[-1]}'
+              f',val_acc: {val_acc[-1]}', flush=True)
 
 
 def eval_net(net, data_loader, device):

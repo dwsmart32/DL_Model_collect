@@ -32,16 +32,16 @@ if __name__ == '__main__':
     net.fc = nn.Linear(fc_input_dim, 12)
 
     epoch = 20
-    lr = 0.0002
+    lr = 0.001
     beta1 = 0.5
     beta2 = 0.999
-    criterion = nn.L1Loss()
+    loss_fn = nn.CrossEntropyLoss().to(device)
 
     net = net.to(device)
     model_path = './Model.ckpt'
     loss_list = []
     optimizer = torch.optim.Adam(net.parameters(), lr=lr, betas=(beta1, beta2))
-    train_net(net, trainloader, validloader, optimizer, epoch, device)
+    train_net(net, trainloader, validloader, optimizer, epoch, device, loss_fn)
     #loss_list2=train(net, device, trainloader, validloader, epoch, criterion, optimizer, model_path, loss_list2)
 
     # writer = SummaryWriter('logs/')
