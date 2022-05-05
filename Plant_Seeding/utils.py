@@ -1,5 +1,4 @@
-import zipfile
-import os
+
 import torchvision
 import torch
 from torchvision.transforms import InterpolationMode

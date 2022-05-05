@@ -1,6 +1,4 @@
 import torch.optim
-
-from Model import *
 from train import *
 from test import *
 from torch.utils.tensorboard import SummaryWriter
@@ -33,11 +31,11 @@ if __name__ == '__main__':
     for p in net.parameters():
         p.requires_grad = False
     fc_input_dim = net.fc.in_features
-    net.fc = nn.Linear(fc_input_dim, 12)
+    net.fc = torch.nn.Linear(fc_input_dim, 12)
 
     epoch = 30
     learning_rate = 0.0001
-    loss_function = nn.CrossEntropyLoss().to(device)
+    loss_function = torch.nn.CrossEntropyLoss().to(device)
     optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate, betas=(0.5, 0.99))
 
     net = net.to(device)
@@ -50,9 +48,9 @@ if __name__ == '__main__':
     #tensorboard
     writer = SummaryWriter('logs/')
     for i in range(0, epoch):
-        writer.add_scalars(f'train_losses', train_losses[i], i)
-        writer.add_scalars(f'train_acc', train_acc[i], i)
-        writer.add_scalars(f'val_acc', val_acc[i], i)
+        writer.add_scalars(f'Accuracy/train_acc+valid_acc', {'train_acc' : train_acc[i], 'valid_acc' : val_acc[i]}, i)
+        writer.add_scalars(f'Loss/', train_losses[i], i)
 
-    #csv update 완료
+
+    # csv update done
     test_net(net, test_data_path, predict_csv_path)
