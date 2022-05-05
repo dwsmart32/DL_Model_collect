@@ -7,23 +7,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
-# def Datadownload(isMac):
-#     if isMac:
-#         import gdown
-#         url = 'https://drive.google.com/uc?id=1iJEx2EzLVv51hi-K1oEFUOqw8LeKj5EK'
-#         output_name = 'flower102.zip'
-#         if not os.path.isfile(output_name):
-#             gdown.download(url, output_name, quiet=False)
-#             with zipfile.ZipFile('./' + output_name, 'r') as zip_ref:
-#                 zip_ref.extractall('./')
-#         else:
-#             print("The dataset file already exist.")
-#     else:
-#         if os.path.isdir('./flower102'):
-#             print('datafile exists')
-#         else:
-#             print('this platform is Window, and No datafile exists')
-#             print('you need to download datafiles by your own.')
 
 
 def Dataset(root_dir, datatype):
@@ -34,7 +17,7 @@ def Dataset(root_dir, datatype):
             torchvision.transforms.ToTensor(),
             #torchvision.transforms.RandomHorizontalFlip(p=0.9),
             #torchvision.transforms.RandomCrop((10, 10), padding=0),
-            torchvision.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+            torchvision.transforms.Normalize((0.3, 0.3, 0.3), (0.1, 0.1, 0.1))])
 
     test_transform = torchvision.transforms.Compose(
         [
@@ -42,8 +25,9 @@ def Dataset(root_dir, datatype):
             torchvision.transforms.ToTensor(),
             #torchvision.transforms.RandomHorizontalFlip(p=0.9),
             #torchvision.transforms.RandomCrop((10,10), padding=0),
-            torchvision.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
-    split_dataset=None
+            torchvision.transforms.Normalize((0.3, 0.3, 0.3), (0.1, 0.1, 0.1))])
+
+    split_dataset = None
 
     if datatype == "train":
         dataset = torchvision.datasets.ImageFolder(root_dir, transform=train_transform)
