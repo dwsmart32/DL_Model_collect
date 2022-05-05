@@ -9,7 +9,7 @@ import os
 
 
 def Dataset(root_dir, datatype):
-    resize_factor=(640,640)
+    resize_factor=(224,224)
     train_transform = torchvision.transforms.Compose(
         [
             torchvision.transforms.Resize(resize_factor, interpolation=InterpolationMode.BICUBIC),

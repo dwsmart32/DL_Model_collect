@@ -20,11 +20,11 @@ if __name__ == '__main__':
 
     batch_size = 32
     train_dataset, valid_dataset = Dataset(train_data_path, "train")
-    test_dataset = Dataset(test_data_path, "test")
+
 
     trainloader = Dataloader(train_dataset, batch_size, "train")
     validloader = Dataloader(valid_dataset, batch_size, "valid")
-    testloader = Dataloader(test_dataset, None, "test")
+
 
     #transfer_learning (resnet50)
     net = models.resnet50(pretrained=True)
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     epoch = 30
     learning_rate = 0.0001
     loss_function = torch.nn.CrossEntropyLoss().to(device)
-    optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate, betas=(0.5, 0.99))
+    optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate, betas=(0.5, 0.99), weight_decay=0.1)
 
     net = net.to(device)
     model_path = './Model.ckpt'
@@ -49,7 +49,7 @@ if __name__ == '__main__':
     writer = SummaryWriter('logs/')
     for i in range(0, epoch):
         writer.add_scalars(f'Accuracy/train_acc+valid_acc', {'train_acc' : train_acc[i], 'valid_acc' : val_acc[i]}, i)
-        writer.add_scalars(f'Loss/', train_losses[i], i)
+        writer.add_scalar(f'Loss/train_loss', train_losses[i], i)
 
 
     # csv update done

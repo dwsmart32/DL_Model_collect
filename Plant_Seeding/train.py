@@ -1,10 +1,12 @@
 from utils import *
 import tqdm
 
+
 def train_net(net, trainloader, test_loader, optimizer, epoch, device, loss_fn):
     train_losses = []
     train_acc = []
     val_acc = []
+
 
     for epoch in range(epoch):
         running_loss = 0.0
@@ -30,6 +32,7 @@ def train_net(net, trainloader, test_loader, optimizer, epoch, device, loss_fn):
             _, y_pred = h.max(1)
             n_acc += (label == y_pred).float().sum().item()
         train_losses.append(running_loss / i)
+
         # train_dataset acc
         train_acc.append(n_acc / total)
 
@@ -38,7 +41,7 @@ def train_net(net, trainloader, test_loader, optimizer, epoch, device, loss_fn):
         # epoch
         print(f'epoch: {epoch+1}, train_loss:{train_losses[-1]}, train_acc:{train_acc[-1]},val_acc: {val_acc[-1]}', flush=True)
 
-        return train_losses, train_acc, val_acc
+    return train_losses, train_acc, val_acc
 
 
 def eval_net(net, data_loader, device):
