@@ -17,6 +17,7 @@ def train_net(net, trainloader, test_loader, optimizer, epoch, device, loss_fn):
         n_acc = 0
 
         for i, (img, label) in tqdm.tqdm(enumerate(trainloader), total=len(trainloader)):
+
             img = img.to(device)
             label = label.to(device)
             h = net(img)
