@@ -19,12 +19,12 @@ if __name__ == '__main__':
     #print_traindataset(train_data_path)
 
     batch_size = 32
-    train_dataset, valid_dataset = Dataset(train_data_path, "train")
-
+    train_dataset, valid_dataset, _ = Dataset(train_data_path, "train")
+    _, _, test_dataset = Dataset(test_data_path, "test")
 
     trainloader = Dataloader(train_dataset, batch_size, "train")
     validloader = Dataloader(valid_dataset, batch_size, "valid")
-
+    testloader = Dataloader(test_dataset, batch_size, "test")
 
     #transfer_learning (resnet50)
     net = models.resnet50(pretrained=True)
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     fc_input_dim = net.fc.in_features
     net.fc = torch.nn.Linear(fc_input_dim, 12)
 
-    epoch = 30
+    epoch = 1
     learning_rate = 0.0001
     loss_function = torch.nn.CrossEntropyLoss().to(device)
     optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate, betas=(0.5, 0.99), weight_decay=0.1)
@@ -53,4 +53,4 @@ if __name__ == '__main__':
 
 
     # csv update done
-    test_net(net, test_data_path, predict_csv_file)
+    test_net(net, testloader, test_data_path, predict_csv_file,device)

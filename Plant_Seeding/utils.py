@@ -5,7 +5,7 @@ from torchvision.transforms import InterpolationMode
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-
+import shutil
 
 
 def Dataset(root_dir, datatype):
@@ -26,8 +26,8 @@ def Dataset(root_dir, datatype):
             #torchvision.transforms.RandomCrop((10,10), padding=0),
             torchvision.transforms.Normalize((0.3, 0.3, 0.3), (0.1, 0.1, 0.1))])
 
-    split_dataset = None
 
+    test_dataset=None;train_dataset=None;valid_dataset=None;
     if datatype == "train":
         dataset = torchvision.datasets.ImageFolder(root_dir, transform=train_transform)
         train_count = int(0.8*len(dataset))
@@ -35,12 +35,23 @@ def Dataset(root_dir, datatype):
         train_dataset, valid_dataset = torch.utils.data.random_split(dataset, [train_count, valid_count])
 
     elif datatype == "test":
-        dataset = torchvision.datasets.ImageFolder(root_dir, transform=test_transform)
+        source_from = root_dir
+        source_to = root_dir + 'dummy/'
+        if not os.path.isdir(source_to): # if dummy folder not exist
+            # get files(.png)
+            get_files = os.listdir(source_from)
+            # make dummy folder
+            os.makedirs(source_to)
 
-    if split_dataset == None:
-        print(f'split_dataset is None.')
+            for g in get_files:
+                shutil.move(source_from + g, source_to)
+        else :
+            print('dummy folder is already made in test_dataset')
 
-    return train_dataset,valid_dataset
+        test_dataset = torchvision.datasets.ImageFolder(source_from, transform=test_transform)
+
+
+    return train_dataset,valid_dataset, test_dataset
 
 
 def Dataloader(dataset, batch_size, datatype):
