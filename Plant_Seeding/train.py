@@ -42,6 +42,9 @@ def train_net(net, trainloader, test_loader, optimizer, epoch, device, loss_fn):
         # epoch
         print(f'epoch: {epoch+1}, train_loss:{train_losses[-1]}, train_acc:{train_acc[-1]},val_acc: {val_acc[-1]}', flush=True)
 
+        if epoch % 3 == 0 and epoch > 10:
+            torch.save(net.cpu().state_dict(),'./model_'+epoch+'.pth')
+
     return train_losses, train_acc, val_acc
 
 

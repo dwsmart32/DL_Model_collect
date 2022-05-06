@@ -34,12 +34,11 @@ if __name__ == '__main__':
     net.fc = torch.nn.Linear(fc_input_dim, 12)
 
     epoch = 30
-    learning_rate = 0.0001
+    learning_rate = 0.0005
     loss_function = torch.nn.CrossEntropyLoss().to(device)
     optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate, betas=(0.5, 0.99), weight_decay=0.1)
 
     net = net.to(device)
-    model_path = './Model.ckpt'
     loss_list = []
 
 
@@ -47,6 +46,7 @@ if __name__ == '__main__':
 
     #tensorboard
     writer = SummaryWriter('logs/')
+    DeleteAllFiles('./logs/')
     for i in range(0, epoch):
         writer.add_scalars(f'Accuracy/train_acc+valid_acc', {'train_acc' : train_acc[i], 'valid_acc' : val_acc[i]}, i)
         writer.add_scalar(f'Loss/train_loss', train_losses[i], i)

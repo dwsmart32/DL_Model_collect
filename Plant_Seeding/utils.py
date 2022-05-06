@@ -126,3 +126,11 @@ def print_traindataset(train_data_path):
     print(f'number_of_total_img : {total_img}')
 
 
+def DeleteAllFiles(filepath):
+    if os.path.exists(filepath):
+        for file in os.scandir(filepath):
+            os.remove(file.path)
+        print('[tensorboard] Remove logs folder for update')
+
+    else:
+        print('[tensorboard] do not need to logs delete filder')
