@@ -7,6 +7,8 @@ def train_net(net, trainloader, test_loader, optimizer, epoch, device, loss_fn):
     train_acc = []
     val_acc = []
 
+    # model save path
+    os.makedirs('./models/', exist_ok=True)
 
     for epoch in range(epoch):
         running_loss = 0.0
