@@ -13,7 +13,7 @@ if __name__ == '__main__':
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print("Device: {}".format(device))
 
-    predict_csv_file = 'sample_submission.csv'
+    predict_csv_file = './plant-seedlings-classification/sample_submission.csv'
     train_data_path = './plant-seedlings-classification/train/'
     test_data_path = './plant-seedlings-classification/test/'
     #print_traindataset(train_data_path)

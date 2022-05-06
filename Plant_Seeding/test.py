@@ -2,9 +2,9 @@ from utils import *
 from PIL import Image
 import pandas as pd
 
-def test_net(net, testdata_path, csv_file):
+def test_net(net, testdata_path, csv_path):
     # read csv file
-    df = pd.read_csv(testdata_path+csv_file)
+    df = pd.read_csv(csv_path)
 
     for img_name in os.listdir(testdata_path):
         testset_Image = Image.open(testdata_path+img_name)
@@ -13,7 +13,7 @@ def test_net(net, testdata_path, csv_file):
         df.loc[row_numbers, 'species'] = y_pred
 
     #save csv file
-    df.to_csv(testdata_path + csv_file, index=False)
+    df.to_csv(csv_path, index=False)
     print('csv file update done')
 
 
