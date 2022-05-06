@@ -1,15 +1,14 @@
-# API 서버 기본 템플릿
+# Deep Learning Model Collect
 
-## dtos
+## DL_Unet
 - create-mainpage
 - update-mainpage
 
-## entities
-- mainpage
-    - id
-    - name
-    - isTest
+## DL_tutorial
+- create-mainpage
+- update-mainpage
 
-## Test
-- Create Account
-- Log In
+## Plant_Seeding
+- [ kaggle ] (https://www.kaggle.com/competitions/plant-seedlings-classification)
+
+
