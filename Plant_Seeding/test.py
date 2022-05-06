@@ -15,7 +15,7 @@ def test_net(net, testloader, testdata_path, csv_path,device):
     for i, (img, label, path) in tqdm.tqdm(enumerate(testloader), total=len(testloader)):
         img = img.to(device)
         label = label.to(device)
-        print(path)
+
         _, y_pred = net(img).max(1)
 
         for i in range(0,len(path)):

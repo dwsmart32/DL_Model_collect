@@ -62,7 +62,8 @@ def Dataset(root_dir, datatype):
 
             for g in get_files:
                 shutil.move(source_from + g, source_to)
-        else :
+            print('dummy folder is made successfully')
+        else:
             print('dummy folder is already made in test_dataset')
 
         test_dataset = ImageFolderWithPaths(source_from, transform=test_transform)
