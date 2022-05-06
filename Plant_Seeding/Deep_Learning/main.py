@@ -36,7 +36,7 @@ if __name__ == '__main__':
     net.fc = torch.nn.Linear(fc_input_dim, 12)
 
     epoch = 30
-    learning_rate = 0.0005
+    learning_rate = 0.0002
     loss_function = torch.nn.CrossEntropyLoss().to(device)
     optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate, betas=(0.5, 0.99), weight_decay=0.1)
 
