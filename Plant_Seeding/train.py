@@ -18,6 +18,7 @@ def train_net(net, trainloader, test_loader, optimizer, epoch, device, loss_fn):
 
         for i, (img, label) in tqdm.tqdm(enumerate(trainloader), total=len(trainloader)):
 
+            net = net.to(device)
             img = img.to(device)
             label = label.to(device)
             h = net(img)
@@ -42,8 +43,9 @@ def train_net(net, trainloader, test_loader, optimizer, epoch, device, loss_fn):
         # epoch
         print(f'epoch: {epoch+1}, train_loss:{train_losses[-1]}, train_acc:{train_acc[-1]},val_acc: {val_acc[-1]}', flush=True)
 
+        #model save
         if epoch % 3 == 0 and epoch > 10:
-            torch.save(net.cpu().state_dict(),'./model_'+epoch+'.pth')
+            torch.save(net.cpu().state_dict(),'./model_'+str(epoch)+'.pth')
 
     return train_losses, train_acc, val_acc
 

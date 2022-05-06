@@ -1,3 +1,5 @@
+import shutil
+
 import torch.optim
 from train import *
 from test import *
@@ -45,12 +47,13 @@ if __name__ == '__main__':
     train_losses, train_acc, val_acc = train_net(net, trainloader, validloader, optimizer, epoch, device, loss_function)
 
     #tensorboard
+    if os.path.isdir('./logs'): shutil.rmtree('./logs/')
     writer = SummaryWriter('logs/')
-    DeleteAllFiles('./logs/')
+
     for i in range(0, epoch):
         writer.add_scalars(f'Accuracy/train_acc+valid_acc', {'train_acc' : train_acc[i], 'valid_acc' : val_acc[i]}, i)
         writer.add_scalar(f'Loss/train_loss', train_losses[i], i)
 
 
-    # csv update done
+    # test, csv update done
     test_net(net, testloader, test_data_path, predict_csv_file,device)
