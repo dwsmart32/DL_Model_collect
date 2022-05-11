@@ -4,9 +4,6 @@ from sklearn.cluster import KMeans
 from scipy.spatial.distance import cdist
 import matplotlib.pyplot as plt
 
-
-
-
 # this mask filter function is cited and transformed by "https://www.kaggle.com/code/wong1131/limmy-s"
 # each steps is described below
 '''
