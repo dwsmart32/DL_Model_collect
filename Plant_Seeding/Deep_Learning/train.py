@@ -47,7 +47,7 @@ def train_net(net, trainloader, test_loader, optimizer, epoch, device, loss_fn):
 
         #model save
         if epoch % 3 == 0 and epoch > 10:
-            torch.save(net.cpu().state_dict(),'.models/model_'+str(epoch)+'.pth')
+            torch.save(net.cpu().state_dict(),'./models/model_'+str(epoch)+'.pth')
 
     return train_losses, train_acc, val_acc
 
