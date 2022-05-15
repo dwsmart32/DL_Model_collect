@@ -25,20 +25,20 @@ class ImageFolderWithPaths(torchvision.datasets.ImageFolder):
 
 
 def Dataset(root_dir, datatype):
-    resize_factor=(224,224)
+    resize_factor=(96,96)
     train_transform = torchvision.transforms.Compose(
         [
             torchvision.transforms.Resize(resize_factor, interpolation=InterpolationMode.BICUBIC),
             torchvision.transforms.ToTensor(),
-            #torchvision.transforms.RandomHorizontalFlip(p=0.9),
-            #torchvision.transforms.RandomCrop((10, 10), padding=0),
+            #torchvision.transforms.RandomHorizontalFlip(p=0.5),
+            #torchvision.transforms.RandomCrop((1, 1), padding=0),
             torchvision.transforms.Normalize((0.3, 0.3, 0.3), (0.1, 0.1, 0.1))])
 
     test_transform = torchvision.transforms.Compose(
         [
             torchvision.transforms.Resize(resize_factor, interpolation=InterpolationMode.BICUBIC),
             torchvision.transforms.ToTensor(),
-            #torchvision.transforms.RandomHorizontalFlip(p=0.9),
+            #torchvision.transforms.RandomHorizontalFlip(p=0.5),
             #torchvision.transforms.RandomCrop((10,10), padding=0),
             torchvision.transforms.Normalize((0.3, 0.3, 0.3), (0.1, 0.1, 0.1))])
 
@@ -66,7 +66,9 @@ def Dataset(root_dir, datatype):
         else:
             print('dummy folder is already made in test_dataset')
 
-        test_dataset = ImageFolderWithPaths(source_from, transform=test_transform)
+        test_dataset = ImageFolderWithPaths(source_from,
+                                            #transform=test_transform
+                                            )
 
 
     return train_dataset,valid_dataset, test_dataset

@@ -24,6 +24,7 @@ def train_net(net, trainloader, test_loader, optimizer, epoch, device, loss_fn):
             img = img.to(device)
             label = label.to(device)
             h = net(img)
+
             loss = loss_fn(h, label)
             optimizer.zero_grad()
             loss.backward()
