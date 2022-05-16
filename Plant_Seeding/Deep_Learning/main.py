@@ -9,6 +9,7 @@ from torchsummary import summary
 from torchvision import models
 import torch
 from Unet import *
+from SimpleNet import *
 
 if __name__ == '__main__':
 
@@ -43,7 +44,7 @@ if __name__ == '__main__':
     # fc_input_dim = net.fc.in_features
     # net.fc = torch.nn.Linear(fc_input_dim, 12)
 
-    net = Unet()
+    net = SimpleNet()
     epoch = 30
     learning_rate = 0.0002
     loss_function = torch.nn.CrossEntropyLoss().to(device)

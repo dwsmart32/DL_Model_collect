@@ -8,9 +8,6 @@
       <change beforePath="$PROJECT_DIR$/../Plant Seeding/.idea/Plant Seeding.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deep_Learning/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep_Learning/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deep_Learning/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep_Learning/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deep_Learning/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep_Learning/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinalPaperTemplate.docx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +23,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -74,5 +79,16 @@
       <updated>1650980689063</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Deep_Learning/Unet.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
