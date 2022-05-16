@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/../Plant Seeding/.idea/Plant Seeding.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deep_Learning/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep_Learning/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deep_Learning/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep_Learning/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deep_Learning/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep_Learning/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

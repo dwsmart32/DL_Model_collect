@@ -1,17 +1,30 @@
-import shutil
-
-import torch.optim
+import argparse
 from train import *
 from test import *
 from torch.utils.tensorboard import SummaryWriter
-import platform
-from torchsummary import summary
-from torchvision import models
 import torch
 from Unet import *
 from SimpleNet import *
+import torchvision.models as models
+
 
 if __name__ == '__main__':
+    '''
+        [net_option] 
+        if you want RESNET50 feature, plz press 'resnet'
+        if you want VGG16 feature, plz press 'vgg16'
+        if you want Unet feature, plz press 'unet'
+        if you want Simplenet feature, plz press 'snet'
+
+        '''
+    # make instance
+    parser = argparse.ArgumentParser(description='SIFT and HOG testing')
+
+    # argument setting
+    parser.add_argument('--net', required=False, default='resnet', type=str, help='net_option : RESNET50 = resnet, VGG16 = vgg, Unet = unet, Simplenet = snet')
+
+    # save arguments
+    args = parser.parse_args()
 
     # seed fix
     torch.manual_seed(42)
@@ -27,6 +40,7 @@ if __name__ == '__main__':
     # Print Dataset description
     #print_traindataset(train_data_path)
 
+    #Datasetload
     batch_size = 32
     train_dataset, valid_dataset, _ = Dataset(train_data_path, "train")
     _, _, test_dataset = Dataset(test_data_path, "test")
@@ -37,6 +51,7 @@ if __name__ == '__main__':
     #test_dataset for Kaggle testing
     testloader = Dataloader(test_dataset, batch_size, "test")
 
+
     # #transfer_learning (resnet50)
     # net = models.resnet50(pretrained=True)
     # for p in net.parameters():
@@ -44,13 +59,30 @@ if __name__ == '__main__':
     # fc_input_dim = net.fc.in_features
     # net.fc = torch.nn.Linear(fc_input_dim, 12)
 
-    net = SimpleNet()
+    if args.net == 'resnet':
+        net = models.resnet50(pretrained=True)
+        for p in net.parameters():
+            p.requires_grad = False
+        fc_input_dim = net.fc.in_features
+        net.fc = torch.nn.Linear(fc_input_dim, 12)
+    elif args.net == 'vgg':
+        net = models.vgg16(pretrained=True)
+        for p in net.parameters():
+            p.requires_grad = False
+        fc_input_dim = net.fc.in_features
+        net.fc = torch.nn.Linear(fc_input_dim, 12)
+    elif args.net == 'unet':
+        net = Unet()
+    elif args.net == 'snet':
+        net = SimpleNet()
+
+
     epoch = 30
-    learning_rate = 0.0002
+    learning_rate = 0.002
     loss_function = torch.nn.CrossEntropyLoss().to(device)
-    optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate, betas=(0.5, 0.99), weight_decay=0.1)
-    #optimizer = torch.optim.SGD(net.parameters(), lr=learning_rate, betas=(0.5, 0.99), weight_decay=0.1)
-    #optimizer = torch.optim.Adagrad(net.parameters(), lr=learning_rate, betas=(0.5, 0.99), weight_decay=0.1)
+    #optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate, betas=(0.5, 0.99), weight_decay=0.1)
+    #optimizer = torch.optim.SGD(net.parameters(), lr=learning_rate, weight_decay=0.1)
+    optimizer = torch.optim.Adagrad(net.parameters(), lr=learning_rate, weight_decay=0.1)
 
     net = net.to(device)
     loss_list = []

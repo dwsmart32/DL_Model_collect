@@ -23,6 +23,7 @@ def train_net(net, trainloader, test_loader, optimizer, epoch, device, loss_fn):
             net = net.to(device)
             img = img.to(device)
             label = label.to(device)
+
             h = net(img)
 
             loss = loss_fn(h, label)

@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import shutil
+from Preprocessing_utils import *
+
 
 
 class ImageFolderWithPaths(torchvision.datasets.ImageFolder):
@@ -67,7 +69,7 @@ def Dataset(root_dir, datatype):
             print('dummy folder is already made in test_dataset')
 
         test_dataset = ImageFolderWithPaths(source_from,
-                                            #transform=test_transform
+                                            transform=test_transform
                                             )
 
 
