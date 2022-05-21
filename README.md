@@ -15,7 +15,7 @@
 - Upgrade of basical model
 
 ## Plant_Seeding
-### 2022 Spring Semester Peking University CVLD homework
+2022 Spring Semester Peking University CVLD homework
 - Dataset and Description below <br/> <br/> 
 ![스크린샷 2022-05-22 오전 12 42 59](https://user-images.githubusercontent.com/70640776/169661190-fc62e0f0-ae14-424b-a5bb-9ad5eb929fcb.png)
 
