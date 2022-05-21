@@ -70,4 +70,8 @@ train accuracy : 97.03%
 valid accuracy : 79.26%
 kaggle test accuracy : 81.17%
 ```
+**[test file upload result in kaggle]**
+<br/>
+<br/>
+![1212](https://user-images.githubusercontent.com/70640776/169661744-9f71452b-dfb8-48e2-b0e5-0773607d6f13.png)
 
