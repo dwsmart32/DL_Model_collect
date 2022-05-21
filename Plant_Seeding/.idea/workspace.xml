@@ -7,9 +7,14 @@
     <list default="true" id="b83b6a07-8da5-49e6-91a2-314b53e8870e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Plant Seeding/.idea/Plant Seeding.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/data_analysis-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/data_subscript-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CV_HW_2102010644.docx" beforeDir="false" afterPath="$PROJECT_DIR$/CV_HW_2102010644.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deep_Learning/Unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep_Learning/Unet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deep_Learning/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep_Learning/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deep_Learning/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep_Learning/train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Deep_Learning/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep_Learning/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data_analysis.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/~$nalPaperTemplate.docx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +92,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Deep_Learning/Unet.py</url>
-          <line>42</line>
+          <line>43</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

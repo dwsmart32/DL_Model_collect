@@ -26,8 +26,7 @@ class ImageFolderWithPaths(torchvision.datasets.ImageFolder):
         return tuple_with_path
 
 
-def Dataset(root_dir, datatype):
-    resize_factor=(96,96)
+def Dataset(root_dir, datatype, resize_factor):
     train_transform = torchvision.transforms.Compose(
         [
             torchvision.transforms.Resize(resize_factor, interpolation=InterpolationMode.BICUBIC),

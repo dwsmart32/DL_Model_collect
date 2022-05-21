@@ -34,6 +34,7 @@ class Unet(nn.Module):
         self.th = nn.Tanh()
         self.relu = nn.ReLU()
         self.flatten = nn.Flatten()
+        self.dropout = nn.Dropout(0.5)
         self.fc = nn.Linear(3*96*96,12)
 
         ##############################################################################
@@ -84,6 +85,7 @@ class Unet(nn.Module):
         x8 = self.th(x8)
 
         x9 = self.flatten(x8)
+        x9 = self.dropout(x9)
         x9 = self.fc(x9)
         ##############################################################################
         #                          END OF YOUR CODE                                  #
