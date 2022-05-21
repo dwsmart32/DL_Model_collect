@@ -61,7 +61,7 @@ python3 main.py --net unet
 2. Dropout
 ```
 
-##### [Result]
+#### 3. [Result]
 <br/>
 <img width="1068" alt="스크린샷 2022-05-22 오전 12 59 03" src="https://user-images.githubusercontent.com/70640776/169661665-7049eabe-a598-40a0-9ddb-2c4e338a28f3.png">
 
